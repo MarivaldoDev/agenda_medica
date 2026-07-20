@@ -6,7 +6,7 @@ bp = Blueprint("agenda", __name__)
 
 
 @bp.route("/")
-# @login_required
+@login_required
 def index():
     schedules = ScheduleService.list_schedules()
     return render_template("agenda/index.html", schedules=schedules)

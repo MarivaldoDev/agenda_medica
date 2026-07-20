@@ -2,9 +2,38 @@
 
 {% block content %}
 
-<h2 class="mb-4">Agenda Médica</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Agenda Médica</h2>
+
+    <a href="{{ url_for('auth.logout') }}"
+       class="btn btn-outline-danger">
+        Sair
+    </a>
+</div>
+
+<div class="row mb-3">
+
+    <div class="col-md-3">
+        <select id="filter-field" class="form-select">
+            <option value="patient">Paciente</option>
+            <option value="cpf">CPF</option>
+            <option value="doctor">Médico</option>
+        </select>
+    </div>
+
+    <div class="col-md-9">
+        <input
+            id="filter-value"
+            class="form-control"
+            type="text"
+            placeholder="Pesquisar..."
+        >
+    </div>
+
+</div>
 
 <div id="schedule-table"></div>
+    
 {% endblock %}
 
 

@@ -1,6 +1,6 @@
 from app.models import User
 from flask import Blueprint, flash, redirect, render_template, url_for
-from flask_login import login_user
+from flask_login import login_user, login_required, logout_user
 
 from app.auth.forms import LoginForm
 
@@ -25,3 +25,10 @@ def login():
         flash("Usuário ou senha inválidos.", "danger")
 
     return render_template("auth/login.html", form=form)
+
+
+@bp.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("auth.login"))
