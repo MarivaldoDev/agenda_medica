@@ -3,10 +3,13 @@ blinker==1.9.0
 certifi==2026.6.17
 charset-normalizer==3.4.9
 click==8.4.2
+dnspython==2.8.0
+email-validator==2.3.0
 flask==3.1.3
 flask-login==0.6.3
 flask-migrate==4.1.0
 flask-sqlalchemy==3.1.1
+flask-wtf==1.3.0
 greenlet==3.5.3
 idna==3.18
 itsdangerous==2.2.0
@@ -19,3 +22,4 @@ sqlalchemy==2.0.51
 typing-extensions==4.16.0
 urllib3==2.7.0
 werkzeug==3.1.8
+wtforms==3.2.2

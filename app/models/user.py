@@ -1,3 +1,5 @@
+from sqlalchemy import or_
+
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -17,3 +19,17 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password: str) -> bool:
         return check_password_hash(self.password_hash, password)
+    
+    @classmethod
+    def authenticate(cls, identifier: str, password: str):
+        user = cls.query.filter(
+            or_(
+                cls.email == identifier,
+                cls.username == identifier,
+            )
+        ).first()
+
+        if user and user.check_password(password):
+            return user
+
+        return None
