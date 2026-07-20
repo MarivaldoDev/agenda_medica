@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Agenda Médica</h2>
+
+<div id="schedule-table"></div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    const schedules = {{ schedules | tojson }};
+</script>
+
+<script src="{{ url_for('static', filename='js/agenda.js') }}"></script>
+{% endblock %}

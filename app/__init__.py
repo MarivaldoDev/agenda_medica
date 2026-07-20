@@ -6,6 +6,8 @@ from app.commands.seed import seed_command
 from app.agenda.routes import bp as agenda_bp
 from app.auth.routes import bp as auth_bp
 
+from app.api_mock.routes import bp as api_mock_bp
+
 
 def create_app():
     app = Flask(__name__)
@@ -17,6 +19,7 @@ def create_app():
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(agenda_bp)
+    app.register_blueprint(api_mock_bp)
 
     from app.auth import login_principal
 
