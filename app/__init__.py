@@ -15,4 +15,6 @@ def create_app():
 
     app.register_blueprint(bp)
 
+    from app.auth import login
+
     return app
