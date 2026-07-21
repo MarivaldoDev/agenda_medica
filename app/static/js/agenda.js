@@ -13,6 +13,8 @@ const table = new Tabulator("#schedule-table", {
         { title: "Especialidade", field: "specialty" },
         { title: "Data", field: "date" },
         { title: "Hora", field: "time" },
+        { title: "Convênio", field: "insurance" },
+        { title: "Status", field: "status" },
     ],
 });
 

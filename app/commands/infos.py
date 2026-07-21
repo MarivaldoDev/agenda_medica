@@ -19,3 +19,19 @@ DOCTORS = [
     ("Dr. Marcelo Costa", "Neurologia"),
     ("Dra. Paula Ribeiro", "Oftalmologia"),
 ]
+
+INSURANCES = [
+    "Unimed",
+    "Bradesco Saúde",
+    "SulAmérica",
+    "Amil",
+    "Hapvida",
+    "Particular",
+]
+
+STATUS = [
+    "Agendado",
+    "Confirmado",
+    "Cancelado",
+    "Em atendimento",
+]

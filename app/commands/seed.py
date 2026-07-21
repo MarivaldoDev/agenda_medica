@@ -5,7 +5,7 @@ from app.extensions import db
 from app.models import User, Schedule
 from datetime import date, time, timedelta
 from random import choice
-from .infos import PATIENTS, DOCTORS
+from .infos import PATIENTS, DOCTORS, INSURANCES, STATUS
 
 
 def create_test_user() -> None:
@@ -40,6 +40,8 @@ def generate_schedules() -> list[Schedule]:
     for index in range(20):
         patient = choice(PATIENTS)
         doctor, specialty = choice(DOCTORS)
+        insurance = choice(INSURANCES)
+        status = choice(STATUS)
 
         schedule = Schedule(
             patient=patient,
@@ -48,6 +50,8 @@ def generate_schedules() -> list[Schedule]:
             specialty=specialty,
             date=base_date + timedelta(days=index % 5),
             time=time(8 + index % 8, (index % 2) * 30),
+            insurance=insurance,
+            status=status
         )
 
         schedules.append(schedule)
