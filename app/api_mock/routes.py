@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 
-from app.api_mock.fake_data import SCHEDULES
+from app.models import Schedule
 
 
 bp = Blueprint(
@@ -12,4 +12,5 @@ bp = Blueprint(
 
 @bp.route("/schedules")
 def schedules():
-    return jsonify(SCHEDULES)
+    schedules = Schedule.query.all()
+    return jsonify([schedule.to_dict() for schedule in schedules])

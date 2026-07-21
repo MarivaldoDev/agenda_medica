@@ -36,3 +36,14 @@ class Schedule(db.Model):
         db.Time,
         nullable=False,
     )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "patient": self.patient,
+            "cpf": self.cpf,
+            "doctor": self.doctor,
+            "specialty": self.specialty,
+            "date": self.date.isoformat(),
+            "time": self.time.strftime("%H:%M"),
+        }
