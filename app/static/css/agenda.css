@@ -1,0 +1,224 @@
+:root {
+	--bg: #f4f6f8;
+	--surface: #ffffff;
+	--ink: #1f2933;
+	--muted: #5f6c7b;
+	--brand: #1f8a70;
+	--brand-dark: #176a56;
+	--danger: #b23a32;
+	--radius-lg: 14px;
+	--shadow-soft: 0 8px 20px rgba(16, 24, 40, 0.06);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	color: var(--ink);
+	font-family: "Space Grotesk", sans-serif;
+	background: var(--bg);
+}
+
+.page-shell {
+	min-height: 100vh;
+}
+
+.app-container {
+	position: relative;
+	z-index: 1;
+	padding-top: 2rem;
+	padding-bottom: 2.5rem;
+}
+
+.app-alert {
+	border: 1px solid transparent;
+	border-radius: 12px;
+}
+
+.login-layout {
+	min-height: calc(100vh - 5.5rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem 0;
+}
+
+.login-card {
+	width: 100%;
+	max-width: 460px;
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-soft);
+}
+
+.login-card {
+	background: var(--surface);
+	border: 1px solid #e4e8ee;
+	padding: 2rem;
+}
+
+.login-kicker {
+	margin: 0;
+	color: var(--brand-dark);
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-weight: 600;
+	font-size: 0.72rem;
+}
+
+.login-title {
+	margin: 0.7rem 0 1.4rem;
+	font-family: "Fraunces", serif;
+	font-size: 1.85rem;
+}
+
+.login-form .form-label {
+	color: var(--muted);
+	font-size: 0.92rem;
+	margin-bottom: 0.35rem;
+}
+
+.app-input {
+	border: 1px solid #cddad3;
+	border-radius: 12px;
+	padding: 0.7rem 0.9rem;
+	font-size: 0.95rem;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-input:focus {
+	border-color: var(--brand);
+	box-shadow: 0 0 0 0.2rem rgba(31, 138, 112, 0.15);
+}
+
+.btn-brand {
+	background: var(--brand);
+	border: 0;
+	border-radius: 12px;
+	color: #fff;
+	font-weight: 700;
+	padding: 0.75rem 1rem;
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+	background: var(--brand-dark);
+	color: #fff;
+}
+
+.agenda-shell {
+	display: grid;
+	gap: 1rem;
+}
+
+.agenda-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	background: var(--surface);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-soft);
+	border: 1px solid #e4e8ee;
+	padding: 1.1rem 1.3rem;
+}
+
+.agenda-title {
+	margin: 0 0 0.35rem;
+	font-family: "Fraunces", serif;
+	font-size: 1.8rem;
+}
+
+.agenda-meta {
+	margin: 0;
+	color: var(--muted);
+}
+
+.btn-logout {
+	border-radius: 12px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.filter-panel,
+.table-panel {
+	background: var(--surface);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-soft);
+	border: 1px solid #e4e8ee;
+	padding: 1rem;
+}
+
+.table-panel {
+	padding: 0.9rem;
+}
+
+.tabulator {
+	border: 0;
+	border-radius: 14px;
+	overflow: hidden;
+}
+
+.tabulator .tabulator-header {
+	background: #eff4f2;
+	border-bottom: 0;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+	background: transparent;
+	border-right-color: #d9e2de;
+	color: #2d3d36;
+	font-weight: 600;
+}
+
+.tabulator-row {
+	border-bottom-color: #dbe9e3;
+}
+
+.tabulator-row:nth-child(even) {
+	background: #f7fcf8;
+}
+
+.status-pill {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px;
+	padding: 0.2rem 0.62rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+}
+
+.status-pill-agendado {
+	background: #e3f4ec;
+	color: #10694f;
+}
+
+.status-pill-cancelado {
+	background: #ffe3df;
+	color: var(--danger);
+}
+
+.status-pill-reagendado {
+	background: #fff0dd;
+	color: #b25c1f;
+}
+
+.status-pill-default {
+	background: #e8ecea;
+	color: #44534d;
+}
+
+@media (max-width: 992px) {
+	.login-layout {
+		min-height: auto;
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.agenda-header {
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+}

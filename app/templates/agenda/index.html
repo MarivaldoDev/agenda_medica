@@ -2,57 +2,57 @@
 
 {% block content %}
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Agenda Médica</h2>
-
-    <div>
-
-        <span class="me-3">
-            {{ current_user.username }}
-        </span>
-
-        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger">
+<div class="agenda-shell">
+    <div class="agenda-header">
+        <div>
+            <h2 class="agenda-title">Agenda Medica</h2>
+            <p class="agenda-meta">Usuario ativo: <strong>{{ current_user.username }}</strong></p>
+        </div>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger btn-logout">
             Sair
         </a>
+    </div>
 
+    {% if error %}
+    <div class="alert alert-danger app-alert">
+        {{ error }}
+    </div>
+    {% elif not has_schedules %}
+    <div class="alert alert-warning app-alert">
+        Nenhum agendamento disponivel no momento.
+    </div>
+    {% endif %}
+
+    <div class="filter-panel">
+        <div class="row g-3 align-items-center">
+            <div class="col-md-4">
+                <label for="filter-field" class="form-label small text-uppercase">Filtrar por</label>
+                <select id="filter-field" class="form-select app-input">
+                    <option value="patient">Paciente</option>
+                    <option value="cpf">CPF</option>
+                    <option value="doctor">Medico</option>
+                    <option value="insurance">Convenio</option>
+                    <option value="status">Status</option>
+                </select>
+            </div>
+
+            <div class="col-md-8">
+                <label for="filter-value" class="form-label small text-uppercase">Busca rapida</label>
+                <input
+                    id="filter-value"
+                    class="form-control app-input"
+                    type="text"
+                    placeholder="Procure por qualquer campo"
+                >
+            </div>
+        </div>
+    </div>
+
+    <div class="table-panel">
+        <div id="schedule-table"></div>
     </div>
 </div>
 
-{% if error %}
-<div class="alert alert-danger">
-    {{ error }}
-</div>
-{% elif not has_schedules %}
-<div class="alert alert-warning">
-    Nenhum agendamento disponível no momento.
-</div>
-{% endif %}
-
-<div class="row mb-3">
-
-    <div class="col-md-3">
-        <select id="filter-field" class="form-select">
-            <option value="patient">Paciente</option>
-            <option value="cpf">CPF</option>
-            <option value="doctor">Médico</option>
-            <option value="insurance">Convênio</option>
-            <option value="status">Status</option>
-        </select>
-    </div>
-
-    <div class="col-md-9">
-        <input
-            id="filter-value"
-            class="form-control"
-            type="text"
-            placeholder="Pesquisar..."
-        >
-    </div>
-
-</div>
-
-<div id="schedule-table"></div>
-    
 {% endblock %}
 
 

@@ -6,44 +6,29 @@ Login
 
 {% block content %}
 
-<div class="row justify-content-center vh-100 align-items-center">
+<div class="login-layout">
+    <section class="login-card">
+        <p class="login-kicker">Acesso seguro</p>
+        <h3 class="login-title">Entrar na Agenda Medica</h3>
 
-    <div class="col-md-4">
+        <form method="POST" class="login-form">
+            {{ form.hidden_tag() }}
 
-        <div class="card shadow">
-
-            <div class="card-body">
-
-                <h3 class="text-center mb-4">
-                    Agenda Médica
-                </h3>
-
-                <form method="POST">
-
-                    {{ form.hidden_tag() }}
-
-                    <div class="mb-3">
-                        {{ form.username.label(class="form-label") }}
-                        {{ form.username(class="form-control") }}
-                    </div>
-
-                    <div class="mb-3">
-                        {{ form.password.label(class="form-label") }}
-                        {{ form.password(class="form-control") }}
-                    </div>
-
-                    <button class="btn btn-primary w-100">
-                        Entrar
-                    </button>
-
-                </form>
-
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control app-input", placeholder="Digite usuario ou e-mail") }}
             </div>
 
-        </div>
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control app-input", placeholder="Digite sua senha") }}
+            </div>
 
+            <button class="btn btn-brand w-100" type="submit">
+                Entrar
+            </button>
+        </form>
+    </section>
     </div>
-
-</div>
 
 {% endblock %}

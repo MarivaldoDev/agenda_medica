@@ -1,8 +1,24 @@
+function statusFormatter(cell) {
+    const status = String(cell.getValue() || "").trim();
+    const normalized = status.toLowerCase();
+
+    const typeByStatus = {
+        agendado: "agendado",
+        cancelado: "cancelado",
+        reagendado: "reagendado",
+    };
+
+    const className = typeByStatus[normalized] || "default";
+    return `<span class="status-pill status-pill-${className}">${status || "Sem status"}</span>`;
+}
+
 const table = new Tabulator("#schedule-table", {
     data: schedules,
     layout: "fitColumns",
     pagination: true,
     paginationSize: 10,
+    responsiveLayout: "collapse",
+    placeholder: "Nenhum agendamento encontrado para os filtros atuais.",
     columns: [
         { title: "Data", field: "date" },
         { title: "Hora", field: "time" },
@@ -11,7 +27,7 @@ const table = new Tabulator("#schedule-table", {
         { title: "Médico", field: "doctor" },
         { title: "Especialidade", field: "specialty" },
         { title: "Convênio", field: "insurance" },
-        { title: "Status", field: "status" },
+        { title: "Status", field: "status", formatter: statusFormatter, hozAlign: "center" },
     ],
 });
 
