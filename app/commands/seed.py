@@ -64,8 +64,6 @@ def generate_schedules() -> list[Schedule]:
 @click.command("seed")
 @with_appcontext
 def seed_command() -> None:
-    db.create_all()
-
     create_test_user()
     create_schedules()
 

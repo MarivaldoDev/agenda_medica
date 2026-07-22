@@ -1,18 +1,15 @@
 const table = new Tabulator("#schedule-table", {
     data: schedules,
-
     layout: "fitColumns",
-
     pagination: true,
     paginationSize: 10,
-
     columns: [
+        { title: "Data", field: "date" },
+        { title: "Hora", field: "time" },
         { title: "Paciente", field: "patient" },
         { title: "CPF", field: "cpf" },
         { title: "Médico", field: "doctor" },
         { title: "Especialidade", field: "specialty" },
-        { title: "Data", field: "date" },
-        { title: "Hora", field: "time" },
         { title: "Convênio", field: "insurance" },
         { title: "Status", field: "status" },
     ],
