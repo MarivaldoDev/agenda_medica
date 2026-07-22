@@ -14,7 +14,9 @@ class Schedule(db.Model):
     insurance = db.Column(db.String(100), nullable=False)
     status = db.Column(db.String(20), nullable=False)
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, str | int]:
+        """Converte o agendamento para um dicionário JSON."""
+
         return {
             "id": self.id,
             "patient": self.patient,
@@ -24,5 +26,5 @@ class Schedule(db.Model):
             "date": self.date.isoformat(),
             "time": self.time.strftime("%H:%M"),
             "insurance": self.insurance,
-            "status": self.status
+            "status": self.status,
         }

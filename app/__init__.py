@@ -1,12 +1,11 @@
 from flask import Flask
 
-from app.config import Config
-from app.extensions import db, migrate, login_manager
-from app.commands.seed import seed_command
 from app.agenda.routes import bp as agenda_bp
-from app.auth.routes import bp as auth_bp
-
 from app.api_mock.routes import bp as api_mock_bp
+from app.auth.routes import bp as auth_bp
+from app.commands.seed import seed_command
+from app.config import Config
+from app.extensions import db, login_manager, migrate
 
 
 def register_extensions(app: Flask) -> None:
@@ -29,9 +28,9 @@ def register_commands(app: Flask) -> None:
     app.cli.add_command(seed_command)
 
 
-def create_app() -> Flask:
+def create_app(config_class=Config) -> Flask:
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
     register_extensions(app)
     register_blueprints(app)

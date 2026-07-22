@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify
 
 from app.models import Schedule
 
-
 bp = Blueprint(
     "api_mock",
     __name__,

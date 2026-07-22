@@ -1,11 +1,13 @@
+from datetime import date, time, timedelta
+from random import choice
+
 import click
 from flask.cli import with_appcontext
 
 from app.extensions import db
-from app.models import User, Schedule
-from datetime import date, time, timedelta
-from random import choice
-from .infos import PATIENTS, DOCTORS, INSURANCES, STATUS
+from app.models import Schedule, User
+
+from .infos import DOCTORS, INSURANCES, PATIENTS, STATUS
 
 
 def create_test_user() -> None:
@@ -23,7 +25,7 @@ def create_test_user() -> None:
     click.echo("Usuário de teste criado com sucesso.")
 
 
-def create_schedules():
+def create_schedules() -> None:
     if Schedule.query.first():
         return
 
@@ -51,7 +53,7 @@ def generate_schedules() -> list[Schedule]:
             date=base_date + timedelta(days=index % 5),
             time=time(8 + index % 8, (index % 2) * 30),
             insurance=insurance,
-            status=status
+            status=status,
         )
 
         schedules.append(schedule)
@@ -62,8 +64,9 @@ def generate_schedules() -> list[Schedule]:
 @click.command("seed")
 @with_appcontext
 def seed_command() -> None:
+    db.create_all()
+
     create_test_user()
     create_schedules()
 
-    click.echo("Database seeded successfully.")
-
+    click.echo("Banco de dados populado com sucesso.")

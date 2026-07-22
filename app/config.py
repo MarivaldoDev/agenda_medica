@@ -9,3 +9,9 @@ class Config:
     SECRET_KEY = getenv("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = getenv("DATABASE_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
+    WTF_CSRF_ENABLED = False

@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
-from app.agenda.services import ScheduleService
 from flask_login import login_required
+
+from app.agenda.services import ScheduleService
 
 bp = Blueprint("agenda", __name__)
 
