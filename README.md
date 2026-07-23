@@ -166,7 +166,6 @@ Cada agendamento contém:
 - Médico
 - Especialidade
 - Data
-- Horário
 - Convênio
 - Status
 

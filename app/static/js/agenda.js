@@ -20,7 +20,16 @@ const table = new Tabulator("#schedule-table", {
     responsiveLayout: "collapse",
     placeholder: "Nenhum agendamento encontrado para os filtros atuais.",
     columns: [
-        { title: "Data", field: "date" },
+        {
+            title: "Data",
+            field: "date",
+            sorter: "date",
+            formatter(cell) {
+                const [year, month, day] = cell.getValue().split("-");
+
+                return `${day}/${month}/${year}`;
+            },
+        },
         { title: "Hora", field: "time" },
         { title: "Paciente", field: "patient" },
         { title: "CPF", field: "cpf" },
