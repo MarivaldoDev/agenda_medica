@@ -5,8 +5,8 @@
 <div class="agenda-shell">
     <div class="agenda-header">
         <div>
-            <h2 class="agenda-title">Agenda Medica</h2>
-            <p class="agenda-meta">Usuario ativo: <strong>{{ current_user.username }}</strong></p>
+            <h2 class="agenda-title">Agenda Médica</h2>
+            <p class="agenda-meta">Usuário ativo: <strong>{{ current_user.username }}</strong></p>
         </div>
         <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger btn-logout">
             Sair
@@ -19,7 +19,7 @@
     </div>
     {% elif not has_schedules %}
     <div class="alert alert-warning app-alert">
-        Nenhum agendamento disponivel no momento.
+        Nenhum agendamento disponível no momento.
     </div>
     {% endif %}
 
@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-md-8">
-                <label for="filter-value" class="form-label small text-uppercase">Busca rapida</label>
+                <label for="filter-value" class="form-label small text-uppercase">Busca rápida</label>
                 <input
                     id="filter-value"
                     class="form-control app-input"
