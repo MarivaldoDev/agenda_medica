@@ -1,7 +1,9 @@
+from datetime import date, time
+
 from flask.testing import FlaskClient
+
 from app.extensions import db
 from app.models import Schedule
-from datetime import date, time
 
 
 def test_login_success(client: FlaskClient, user) -> None:
@@ -53,7 +55,7 @@ def test_login_required_success(client: FlaskClient) -> None:
     assert response.headers["Location"].endswith("/auth/login?next=%2F")
 
     redirect = client.get(response.headers["Location"], follow_redirects=True)
-    assert 'Você precisa fazer login para acessar esta página.' in redirect.text
+    assert "Você precisa fazer login para acessar esta página." in redirect.text
 
 
 def test_login_required_authenticated(client: FlaskClient, user) -> None:
@@ -69,7 +71,6 @@ def test_login_required_authenticated(client: FlaskClient, user) -> None:
     response = client.get("/", follow_redirects=False)
 
     print(response.data[1])
-
 
     assert response.status_code == 200
     assert "admin" in response.text
